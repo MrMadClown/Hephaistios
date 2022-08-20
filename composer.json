@@ -1,0 +1,48 @@
+{
+    "name": "mrmadclown/hephaistios",
+    "description": "Hephaistios a Container",
+    "keywords": [],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "psr/container": "^2.0",
+        "symfony/service-contracts": "^3.1"
+    },
+    "require-dev": {
+        "infection/infection": "^0.26.13",
+        "phpunit/phpunit": "9.5.21"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "infection/extension": false,
+            "infection/extension-installer": false
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "MrMadClown\\Hephaistios\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "tests": [
+            "phpunit --configuration phpunit.xml --verbose --debug"
+        ],
+        "coverage": [
+            "XDEBUG_MODE=coverage php vendor/bin/phpunit --configuration phpunit.xml --verbose --debug --coverage-xml=coverage/coverage-xml --log-junit=coverage/junit.xml --coverage-html=coverage"
+        ],
+        "infection": [
+            "php vendor/bin/infection --coverage=coverage"
+        ]
+    }
+}
